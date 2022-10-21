@@ -1,0 +1,24 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a [routerLink]="'/'" class="navbar-brand">Domaci 1</a>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a [routerLink]="'/token'" class="nav-link active" aria-current="page">Token</a>
+          <a [routerLink]="'/entity'" class="nav-link active" aria-current="page">Entity extraction</a>
+          <a [routerLink]="'/text'" class="nav-link active" aria-current="page">Text Simularity</a>
+          <a [routerLink]="'/language'" class="nav-link active" aria-current="page">Language Detection</a>
+          <a [routerLink]="'/analysis'" class="nav-link active" aria-current="page">Sentiment Analysis</a>
+          <a [routerLink]="'/history'" class="nav-link active" aria-current="page">History</a>
+        </div>
+        <div class="d-flex">
+          <!-- <span>{{ getUserName() }}</span> -->
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container pt-3">
+  <router-outlet></router-outlet>
+</div>
