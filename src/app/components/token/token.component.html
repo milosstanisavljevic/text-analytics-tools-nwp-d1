@@ -1,1 +1,16 @@
 <p>token works!</p>
+<div class="home">
+    <section class="home-section">
+        <h1>Token registration page</h1>
+        <div>
+            <p>Token:</p>
+            <div>
+                <form (submit)="saveToken()">
+                    <input type="text" class="token" name="token" [(ngModel)]="token">
+                    <input type="submit" class="tokensub" value="Submit token">
+                    <p>Your token: {{token}}</p>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>

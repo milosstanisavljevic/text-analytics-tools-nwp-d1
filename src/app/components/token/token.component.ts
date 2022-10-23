@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-token',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TokenComponent implements OnInit {
 
-  constructor() { }
+  token: string;
+  constructor(private tokenService: TokenService) {
+    this.token = this.tokenService.getToken();
+  }
 
   ngOnInit(): void {
   }
 
+  saveToken() {
+    this.tokenService.saveToken(this.token);
+  }
 }

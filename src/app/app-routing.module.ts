@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { AppComponent } from './components/app/app.component';
 import { EntityComponent } from './components/entity/entity.component';
 import { HistoryComponent } from './components/history/history.component';
@@ -9,25 +10,29 @@ import { TextSimilarityComponent } from './components/text-similarity/text-simil
 import { TokenComponent } from './components/token/token.component';
 
 const routes: Routes = [
-  {
-    path: "",
-    component: AppComponent
-  },
+  // {
+  //   path: "",
+  //   component: AppComponent
+  // },
   {
     path: "history",
-    component: HistoryComponent
+    component: HistoryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "entity",
-    component: EntityComponent
+    component: EntityComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "language",
-    component: LanguageDetectionComponent
+    component: LanguageDetectionComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "text",
-    component: TextSimilarityComponent
+    component: TextSimilarityComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "token",
@@ -35,7 +40,8 @@ const routes: Routes = [
   },
   {
     path: "analysis",
-    component: SentimentAnalysisComponent
+    component: SentimentAnalysisComponent,
+    canActivate: [AuthGuard]
   }
 
 ];

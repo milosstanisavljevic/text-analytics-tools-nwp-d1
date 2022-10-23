@@ -9,6 +9,8 @@ import { TextSimilarityComponent } from './components/text-similarity/text-simil
 import { LanguageDetectionComponent } from './components/language-detection/language-detection.component';
 import { SentimentAnalysisComponent } from './components/sentiment-analysis/sentiment-analysis.component';
 import { EntityComponent } from './components/entity/entity.component';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule } from "@angular/common/http"
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import { EntityComponent } from './components/entity/entity.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
