@@ -1,1 +1,20 @@
-<p>language-detection works!</p>
+<div class="container">
+    <div class="col-4">
+        <form class="p-4 p-md-5" (ngSubmit)="detectedLanguage()">
+            <label class="form-label d-block">Text</label>
+            <textarea [(ngModel)]="text" name="text" rows="10"></textarea>
+            <div>
+                <input type="checkbox" name="clean" [(ngModel)]="clean">
+                <label class="form-check-label">Clean</label>
+            </div>
+            <button type="submit" class="btn" [disabled]="loading">
+                <div>Submit</div>
+            </button>
+        </form>
+    </div>
+    <div class="col-4">
+        <div *ngFor="let lang of this.data.detectedLangs">
+            <h1>Language: {{ lang.lang }} - Confidence: {{ lang.confidence }}</h1>
+        </div>
+    </div>
+</div>

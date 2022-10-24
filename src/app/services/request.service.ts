@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { languageDetection, TextSimilarity } from '../model';
+import { EntityExtraction, languageDetection, SentimentAnalysis, TextSimilarity } from '../model';
 import { TokenService } from './token.service';
 
 
@@ -33,5 +33,26 @@ export class RequestService {
       token,
     }
     return this.httpClient.get<languageDetection>(`${this.api}/li/v1`, { params, });
+  }
+  SentimentAnalysisService(language: string, text: string): Observable<SentimentAnalysis> {
+    let token = this.tokenService.getToken();
+    let params = {
+      language,
+      text,
+      token
+    };
+
+    return this.httpClient.get<SentimentAnalysis>(`${this.api}/sent/v1/`, { params, });
+  }
+  EntityExtractionService(text: string, min_confidence: number, include: string): Observable<EntityExtraction> {
+    let token = this.tokenService.getToken();
+    let params = {
+      text,
+      min_confidence,
+      include,
+      token
+    };
+
+    return this.httpClient.get<EntityExtraction>(`${this.api}/nex/v1/`, { params, });
   }
 }
