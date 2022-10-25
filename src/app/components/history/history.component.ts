@@ -7,8 +7,10 @@ import { RequestService } from 'src/app/services/request.service';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
-
-  constructor(private service: RequestService) { }
+  history: string[] = [];
+  constructor(private service: RequestService) {
+    this.history = this.service.getHistory();
+  }
 
   ngOnInit(): void {
   }

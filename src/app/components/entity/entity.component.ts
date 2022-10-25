@@ -48,11 +48,6 @@ export class EntityComponent implements OnInit {
   ngOnInit(): void {
   }
   entityExtract(): void {
-    // this.service.EntityExtractionService(this.text, this.min_confidence, this.include).subscribe(data => {
-    //   this.data = data;
-    //   this.dataAvailable = true;
-    //   console.log(data)
-    // })
     this.includeImage = this.entityForm.get('includeImage')?.value;
     this.includeAbstract = this.entityForm.get('includeAbstract')?.value;
     this.includeCategories = this.entityForm.get('includeCategories')?.value;
@@ -70,20 +65,4 @@ export class EntityComponent implements OnInit {
       });
 
   }
-  //}
-  // onSubmit(): void {
-  //   if (this.includeArray.length != 0) this.entityFormData.include = this.includeArray.join()
-  //   console.log(this.entityFormData);
-  //   this.loading = true;
-  //   this.dandelion.sendEntityExtractionRequest(this.entityFormData).subscribe(
-  //     response => {
-  //       this.annotations = response.annotations
-  //       this.loading = false;
-  //     },
-  //     err => {
-  //       console.error(err);
-  //       this.loading = false;
-  //     }
-  //   )
-  // }
 }

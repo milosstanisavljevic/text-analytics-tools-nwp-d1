@@ -1,1 +1,6 @@
-<p>history works!</p>
+<div class="history-channel">
+    <h1>History of your requests:</h1>
+    <h2 *ngFor="let request of this.history">
+        Request: {{ request }}
+    </h2>
+</div>

@@ -36,7 +36,7 @@ export interface EntityExtraction {
 export interface SentimentAnalysis {
     timestamp: string;
     // time: number;
-    // language: string;
+    lang: string;
     sentiment: {
         score: number;
         type: string;
