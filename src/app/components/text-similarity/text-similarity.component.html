@@ -1,10 +1,11 @@
 <div class='text-similarity'>
+    <h1>Text similarity</h1>
     <form [formGroup]="similarityForm" (submit)="findTextSimilarity()">
-        <textarea type="text" [formControlName]="'text1'">
+        <textarea type="text" class="form-control" [formControlName]="'text1'">
         </textarea>
-        <textarea type="text" [formControlName]="'text2'">
+        <textarea type="text" class="form-control" [formControlName]="'text2'">
         </textarea>
-        <button type="submit" value="Submit" class="btn">
+        <button type="submit" value="Submit" class="button">
             <div>Submit</div>
         </button>
         <p>Text similarity:</p>

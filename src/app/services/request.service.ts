@@ -44,8 +44,12 @@ export class RequestService {
 
     return this.httpClient.get<SentimentAnalysis>(`${this.api}/sent/v1/`, { params, });
   }
-  EntityExtractionService(text: string, min_confidence: number, include: string): Observable<EntityExtraction> {
+  EntityExtractionService(text: string, min_confidence: number, includeImage: boolean, includeAbstract: boolean, includeCategories: boolean): Observable<EntityExtraction> {
     let token = this.tokenService.getToken();
+    let include: string[] = [];
+    if (includeImage != null) { include.push('image') }
+    if (includeAbstract != null) { include.push('abstract') }
+    if (includeCategories != null) { include.push('categories') }
     let params = {
       text,
       min_confidence,

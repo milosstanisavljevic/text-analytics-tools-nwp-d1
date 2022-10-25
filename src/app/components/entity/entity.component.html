@@ -1,1 +1,60 @@
-<p>entity works!</p>
+<div class="entity-main">
+    <h1>Entity Extraction</h1>
+    <p>Enter a sentence to extract named entities: it works well also on short texts.</p>
+
+    <form [formGroup]="entityForm" (submit)="entityExtract()">
+        <div>
+            <textarea class="form-control" [formControlName]="'entityText'"></textarea>
+        </div>
+        <div>
+            <label>Minimum confidence coefficient (0-1):</label>
+            <input type="range" min="0" max="1" step="0.01" [formControlName]="'confidence'">
+        </div>
+        <div>
+            <br>
+            <p>Choose the "include" parameters (optional):</p>
+            <div>
+                <div>
+                    <input class="form-check-input" type="checkbox" id="includeImage"
+                        [formControlName]="'includeImage'" />
+                    <label class="form-check-label" for="includeImage">Image</label>
+                </div>
+                <div>
+                    <input class="form-check-input" type="checkbox" id="includeAbstract"
+                        [formControlName]="'includeAbstract'" />
+                    <label class="form-check-label" for="includeAbstract">Abstract</label>
+                </div>
+                <div>
+                    <input class="form-check-input" type="checkbox" id="includeCategories"
+                        [formControlName]="'includeCategories'" />
+                    <label class="form-check-label" for="includeCategories">Categories</label>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="button">
+            Submit
+        </button>
+    </form>
+    <div *ngIf="this.dataAvailable" class="annotations">
+        <div *ngFor="let annotation of this.data.annotations; let index = index">
+            <h2>Annotation number - {{ index }}</h2>
+            <div>
+                <p>Title: {{ annotation.title }}</p>
+                <p>
+                    Wikipedia page for
+                    <a [href]="annotation.uri">{{ annotation.title }}</a>
+                </p>
+                <img *ngIf="this.includeImage" [src]="annotation.image.thumbnail">
+                <p *ngIf="this.includeCategories" class="annotation-categories">
+                    Categories -
+                    <span *ngFor="let category of annotation.categories; let i = index">{{ i }}. {{ category }},
+                    </span>
+                </p>
+                <p *ngIf="this.includeAbstract" class="annotation-abstract">
+                    {{ annotation.abstract }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

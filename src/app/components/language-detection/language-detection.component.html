@@ -1,13 +1,14 @@
 <div class="container">
     <div class="col-4">
-        <form class="p-4 p-md-5" (ngSubmit)="detectedLanguage()">
+        <h1>Language Detection</h1>
+        <form (ngSubmit)="detectedLanguage()">
             <label class="form-label d-block">Text</label>
-            <textarea [(ngModel)]="text" name="text" rows="10"></textarea>
+            <textarea class="form-control" [(ngModel)]="text" name="text" rows="10"></textarea>
             <div>
                 <input type="checkbox" name="clean" [(ngModel)]="clean">
                 <label class="form-check-label">Clean</label>
             </div>
-            <button type="submit" class="btn" [disabled]="loading">
+            <button type="submit" class="button" [disabled]="loading">
                 <div>Submit</div>
             </button>
         </form>

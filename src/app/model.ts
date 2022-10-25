@@ -17,7 +17,7 @@ export interface languageDetection {
 export interface EntityExtraction {
     timestamp: string;
     time: number;
-    language: string;
+    lang: string;
     annotations: [
         {
             title: string;
