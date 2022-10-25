@@ -20,7 +20,7 @@ export class SentimentAnalysisComponent implements OnInit {
     },
   };
   dataAvailable: boolean = false;
-  sentimentColor = 'blue';
+  sentimentColor: any;
 
   constructor(private service: RequestService, private formBuilder: FormBuilder) {
     this.sentimentForm = this.formBuilder.group({

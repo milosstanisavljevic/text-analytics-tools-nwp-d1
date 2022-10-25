@@ -38,14 +38,14 @@ export class RequestService {
     return this.httpClient.get<languageDetection>(`${this.api}/li/v1`, { params, });
   }
 
-  SentimentAnalysisService(language: string, text: string): Observable<SentimentAnalysis> {
+  SentimentAnalysisService(text: string, lang: string): Observable<SentimentAnalysis> {
     let token = this.tokenService.getToken();
     let params = {
-      language,
       text,
+      lang,
       token
     };
-    this.addToHistoryService(new Date(), 'sim', 'GET', { text, language, token });
+    this.addToHistoryService(new Date(), 'sim', 'GET', { text, lang, token });
     return this.httpClient.get<SentimentAnalysis>(`${this.api}/sent/v1/`, { params, });
   }
 
@@ -64,12 +64,7 @@ export class RequestService {
     this.addToHistoryService(new Date(), 'sim', 'GET', { text, token });
     return this.httpClient.get<EntityExtraction>(`${this.api}/nex/v1/`, { params, });
   }
-  addToHistoryService(
-    timestamp: Date,
-    urlEnding: string,
-    requestType: string,
-    queries: { [name: string]: string }
-  ) {
+  addToHistoryService(timestamp: Date, urlEnding: string, requestType: string, queries: { [name: string]: string }) {
     let queriesString = '';
     let keys = Object.keys(queries);
     keys.forEach((key) => {
